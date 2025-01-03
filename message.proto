@@ -1,0 +1,145 @@
+syntax = "proto2";
+// https://github.com/protobuf-c/protobuf-c/wiki/Examples#strings
+enum Proto_Severity {
+    POSITIVE = 1;
+    NORMAL = 2;
+    WARN = 3;
+    CRIT = 4;
+}
+
+enum Proto_Event_Type {
+    EVT_NONE = 1;
+    EVT_LAP = 2;
+    EVT_TIME_REMAIN = 3;
+    EVT_STATE_CHANGE = 4;
+};
+
+enum Proto_Command_Type {
+    COM_NONE = 1;
+    COM_PIT = 2;
+    COM_STINT_OVER = 3;
+    COM_FCK = 4;
+};
+
+enum Proto_Lora_Type {
+    LORA_ACK = 1;
+    LORA_OIL = 2;
+    LORA_WATER = 3;
+    LORA_GAS = 4;
+    LORA_LAP = 5;
+    LORA_STINT = 6;
+    LORA_COMMAND = 7;
+};
+
+
+message Proto_Event {
+    optional int32 id = 1;
+    optional Proto_Event_Type type = 2;
+    optional Proto_Severity severity = 3;
+    optional int64 created_at = 4;
+    optional int64 displayed_since = 5;
+    optional string text = 6;
+}
+
+
+message Proto_Command {
+  optional Proto_Command_Type type = 1;
+  optional int32 id = 2;
+  optional int64 created = 3;
+  optional int64 handled = 4;
+}
+
+message Proto_Car_Sensor {
+  optional uint32 temp = 1 [default = 0]; 
+  optional double preassure = 2 [default = 0];
+}
+
+message Proto_Stint_Data {
+  optional bool running = 1;
+  optional bool enabled = 2;
+  optional uint32 target = 3;
+  optional uint32 elapsed = 4;
+  optional uint32 elapsed_timestamp = 5;
+}
+
+message Proto_Lap {
+  optional int32 lap_no = 1;
+  optional int64 lap_time_ms = 2;
+}
+
+message Proto_Lap_Data {
+  optional int32 lap_no = 1;
+  optional uint32 best_lap_ms = 2;
+  optional uint32 current_lap_ms = 3;
+  optional uint32 current_lap_snapshot_time = 4;
+
+  repeated Proto_Lap laps = 5;
+}
+
+message Proto_Gps_Data {
+  optional int32 spd = 1;
+  optional double lat = 2;
+  optional double lon = 3;
+}
+
+message Proto_Lora_Config {
+    optional double bandwidth = 1;
+    optional uint32 spreading_factor = 2;
+    optional int32 output_power = 3;
+}
+
+message Proto_Lora_Stats {
+    optional double rssi = 1;
+    optional double snr = 2;
+    optional int32 receive_time = 3 ;
+}
+
+message Proto_Mcu_Data {
+    optional uint32 network_time_adjustment = 1;
+    optional uint32 send_timestamp = 2;
+    optional Proto_Car_Sensor water = 3;
+    optional Proto_Car_Sensor oil = 4;
+    optional Proto_Car_Sensor gas = 5;
+    optional Proto_Stint_Data stint = 6;
+    optional Proto_Lap_Data lap_data = 7;  
+    repeated Proto_Event events = 8;
+
+    repeated Proto_Command outgoing_commands = 9;
+    repeated Proto_Command incoming_commands = 10;
+
+    optional Proto_Gps_Data gps = 11;
+    
+    optional Proto_Car_Sensor gas_warn = 12;
+    optional Proto_Car_Sensor oil_warn = 13;
+
+    optional Proto_Lora_Config lora_config = 14;
+}
+
+message Proto_Update_Data {
+    optional Proto_Car_Sensor water_sensor = 1;
+    optional Proto_Car_Sensor oil_sensor = 2;
+    optional Proto_Car_Sensor gas_sensor = 3;
+    optional Proto_Lap_Data lap_data = 4;
+    optional Proto_Stint_Data stint_data = 5;
+    optional Proto_Gps_Data gps_data = 6;
+};
+
+message Proto_Ack_Data {
+    optional uint32 seq_nr   = 1; 
+}
+
+message Proto_LoRa_Data {
+  optional uint32 seq_nr = 1 [default = 0];
+  optional bool requires_ack = 2 [default = false];
+  optional uint32 send_timestamp = 3;
+  optional Proto_Update_Data update_data = 4;
+  optional Proto_Command command_data = 5;
+  optional Proto_Ack_Data ack_data = 6;
+}
+
+message Proto_Message {
+  optional Proto_Mcu_Data mcu_data = 1;
+  optional Proto_LoRa_Data lora_data = 2;
+  optional Proto_Command command_data = 3;
+  optional Proto_Lora_Stats lora_stats = 4;
+}
