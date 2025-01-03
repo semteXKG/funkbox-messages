@@ -23,6 +23,7 @@ typedef struct _ProtoLap ProtoLap;
 typedef struct _ProtoLapData ProtoLapData;
 typedef struct _ProtoGpsData ProtoGpsData;
 typedef struct _ProtoLoraConfig ProtoLoraConfig;
+typedef struct _ProtoOdb2Data ProtoOdb2Data;
 typedef struct _ProtoLoraStats ProtoLoraStats;
 typedef struct _ProtoMcuData ProtoMcuData;
 typedef struct _ProtoUpdateData ProtoUpdateData;
@@ -201,6 +202,17 @@ struct  _ProtoLoraConfig
     , 0, 0, 0, 0, 0, 0 }
 
 
+struct  _ProtoOdb2Data
+{
+  ProtobufCMessage base;
+  protobuf_c_boolean has_rpm;
+  uint32_t rpm;
+};
+#define PROTO__ODB2__DATA__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&proto__odb2__data__descriptor) \
+    , 0, 0 }
+
+
 struct  _ProtoLoraStats
 {
   ProtobufCMessage base;
@@ -238,10 +250,11 @@ struct  _ProtoMcuData
   ProtoCarSensor *gas_warn;
   ProtoCarSensor *oil_warn;
   ProtoLoraConfig *lora_config;
+  ProtoOdb2Data *odb2_data;
 };
 #define PROTO__MCU__DATA__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&proto__mcu__data__descriptor) \
-    , 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, NULL, NULL }
+    , 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, NULL, NULL, NULL }
 
 
 struct  _ProtoUpdateData
@@ -253,10 +266,11 @@ struct  _ProtoUpdateData
   ProtoLapData *lap_data;
   ProtoStintData *stint_data;
   ProtoGpsData *gps_data;
+  ProtoOdb2Data *odb2_data;
 };
 #define PROTO__UPDATE__DATA__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&proto__update__data__descriptor) \
-    , NULL, NULL, NULL, NULL, NULL, NULL }
+    , NULL, NULL, NULL, NULL, NULL, NULL, NULL }
 
 
 struct  _ProtoAckData
@@ -453,6 +467,25 @@ ProtoLoraConfig *
 void   proto__lora__config__free_unpacked
                      (ProtoLoraConfig *message,
                       ProtobufCAllocator *allocator);
+/* ProtoOdb2Data methods */
+void   proto__odb2__data__init
+                     (ProtoOdb2Data         *message);
+size_t proto__odb2__data__get_packed_size
+                     (const ProtoOdb2Data   *message);
+size_t proto__odb2__data__pack
+                     (const ProtoOdb2Data   *message,
+                      uint8_t             *out);
+size_t proto__odb2__data__pack_to_buffer
+                     (const ProtoOdb2Data   *message,
+                      ProtobufCBuffer     *buffer);
+ProtoOdb2Data *
+       proto__odb2__data__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   proto__odb2__data__free_unpacked
+                     (ProtoOdb2Data *message,
+                      ProtobufCAllocator *allocator);
 /* ProtoLoraStats methods */
 void   proto__lora__stats__init
                      (ProtoLoraStats         *message);
@@ -593,6 +626,9 @@ typedef void (*ProtoGpsData_Closure)
 typedef void (*ProtoLoraConfig_Closure)
                  (const ProtoLoraConfig *message,
                   void *closure_data);
+typedef void (*ProtoOdb2Data_Closure)
+                 (const ProtoOdb2Data *message,
+                  void *closure_data);
 typedef void (*ProtoLoraStats_Closure)
                  (const ProtoLoraStats *message,
                   void *closure_data);
@@ -629,6 +665,7 @@ extern const ProtobufCMessageDescriptor proto__lap__descriptor;
 extern const ProtobufCMessageDescriptor proto__lap__data__descriptor;
 extern const ProtobufCMessageDescriptor proto__gps__data__descriptor;
 extern const ProtobufCMessageDescriptor proto__lora__config__descriptor;
+extern const ProtobufCMessageDescriptor proto__odb2__data__descriptor;
 extern const ProtobufCMessageDescriptor proto__lora__stats__descriptor;
 extern const ProtobufCMessageDescriptor proto__mcu__data__descriptor;
 extern const ProtobufCMessageDescriptor proto__update__data__descriptor;

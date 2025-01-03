@@ -88,6 +88,10 @@ message Proto_Lora_Config {
     optional int32 output_power = 3;
 }
 
+message Proto_Odb2_Data {
+    optional uint32 rpm = 1;
+}
+
 message Proto_Lora_Stats {
     optional double rssi = 1;
     optional double snr = 2;
@@ -113,6 +117,7 @@ message Proto_Mcu_Data {
     optional Proto_Car_Sensor oil_warn = 13;
 
     optional Proto_Lora_Config lora_config = 14;
+    optional Proto_Odb2_Data odb2_data = 15;
 }
 
 message Proto_Update_Data {
@@ -122,6 +127,7 @@ message Proto_Update_Data {
     optional Proto_Lap_Data lap_data = 4;
     optional Proto_Stint_Data stint_data = 5;
     optional Proto_Gps_Data gps_data = 6;
+    optional Proto_Odb2_Data odb2_data = 7;
 };
 
 message Proto_Ack_Data {

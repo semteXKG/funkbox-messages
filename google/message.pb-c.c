@@ -367,6 +367,51 @@ void   proto__lora__config__free_unpacked
   assert(message->base.descriptor == &proto__lora__config__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   proto__odb2__data__init
+                     (ProtoOdb2Data         *message)
+{
+  static const ProtoOdb2Data init_value = PROTO__ODB2__DATA__INIT;
+  *message = init_value;
+}
+size_t proto__odb2__data__get_packed_size
+                     (const ProtoOdb2Data *message)
+{
+  assert(message->base.descriptor == &proto__odb2__data__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t proto__odb2__data__pack
+                     (const ProtoOdb2Data *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &proto__odb2__data__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t proto__odb2__data__pack_to_buffer
+                     (const ProtoOdb2Data *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &proto__odb2__data__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+ProtoOdb2Data *
+       proto__odb2__data__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (ProtoOdb2Data *)
+     protobuf_c_message_unpack (&proto__odb2__data__descriptor,
+                                allocator, len, data);
+}
+void   proto__odb2__data__free_unpacked
+                     (ProtoOdb2Data *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &proto__odb2__data__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   proto__lora__stats__init
                      (ProtoLoraStats         *message)
 {
@@ -1229,6 +1274,44 @@ const ProtobufCMessageDescriptor proto__lora__config__descriptor =
   (ProtobufCMessageInit) proto__lora__config__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor proto__odb2__data__field_descriptors[1] =
+{
+  {
+    "rpm",
+    1,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_UINT32,
+    offsetof(ProtoOdb2Data, has_rpm),
+    offsetof(ProtoOdb2Data, rpm),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned proto__odb2__data__field_indices_by_name[] = {
+  0,   /* field[0] = rpm */
+};
+static const ProtobufCIntRange proto__odb2__data__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor proto__odb2__data__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "Proto_Odb2_Data",
+  "ProtoOdb2Data",
+  "ProtoOdb2Data",
+  "",
+  sizeof(ProtoOdb2Data),
+  1,
+  proto__odb2__data__field_descriptors,
+  proto__odb2__data__field_indices_by_name,
+  1,  proto__odb2__data__number_ranges,
+  (ProtobufCMessageInit) proto__odb2__data__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor proto__lora__stats__field_descriptors[3] =
 {
   {
@@ -1293,7 +1376,7 @@ const ProtobufCMessageDescriptor proto__lora__stats__descriptor =
   (ProtobufCMessageInit) proto__lora__stats__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor proto__mcu__data__field_descriptors[14] =
+static const ProtobufCFieldDescriptor proto__mcu__data__field_descriptors[15] =
 {
   {
     "network_time_adjustment",
@@ -1463,6 +1546,18 @@ static const ProtobufCFieldDescriptor proto__mcu__data__field_descriptors[14] =
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "odb2_data",
+    15,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(ProtoMcuData, odb2_data),
+    &proto__odb2__data__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned proto__mcu__data__field_indices_by_name[] = {
   7,   /* field[7] = events */
@@ -1473,6 +1568,7 @@ static const unsigned proto__mcu__data__field_indices_by_name[] = {
   6,   /* field[6] = lap_data */
   13,   /* field[13] = lora_config */
   0,   /* field[0] = network_time_adjustment */
+  14,   /* field[14] = odb2_data */
   3,   /* field[3] = oil */
   12,   /* field[12] = oil_warn */
   8,   /* field[8] = outgoing_commands */
@@ -1483,7 +1579,7 @@ static const unsigned proto__mcu__data__field_indices_by_name[] = {
 static const ProtobufCIntRange proto__mcu__data__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 14 }
+  { 0, 15 }
 };
 const ProtobufCMessageDescriptor proto__mcu__data__descriptor =
 {
@@ -1493,14 +1589,14 @@ const ProtobufCMessageDescriptor proto__mcu__data__descriptor =
   "ProtoMcuData",
   "",
   sizeof(ProtoMcuData),
-  14,
+  15,
   proto__mcu__data__field_descriptors,
   proto__mcu__data__field_indices_by_name,
   1,  proto__mcu__data__number_ranges,
   (ProtobufCMessageInit) proto__mcu__data__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor proto__update__data__field_descriptors[6] =
+static const ProtobufCFieldDescriptor proto__update__data__field_descriptors[7] =
 {
   {
     "water_sensor",
@@ -1574,11 +1670,24 @@ static const ProtobufCFieldDescriptor proto__update__data__field_descriptors[6] 
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "odb2_data",
+    7,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(ProtoUpdateData, odb2_data),
+    &proto__odb2__data__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned proto__update__data__field_indices_by_name[] = {
   2,   /* field[2] = gas_sensor */
   5,   /* field[5] = gps_data */
   3,   /* field[3] = lap_data */
+  6,   /* field[6] = odb2_data */
   1,   /* field[1] = oil_sensor */
   4,   /* field[4] = stint_data */
   0,   /* field[0] = water_sensor */
@@ -1586,7 +1695,7 @@ static const unsigned proto__update__data__field_indices_by_name[] = {
 static const ProtobufCIntRange proto__update__data__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 6 }
+  { 0, 7 }
 };
 const ProtobufCMessageDescriptor proto__update__data__descriptor =
 {
@@ -1596,7 +1705,7 @@ const ProtobufCMessageDescriptor proto__update__data__descriptor =
   "ProtoUpdateData",
   "",
   sizeof(ProtoUpdateData),
-  6,
+  7,
   proto__update__data__field_descriptors,
   proto__update__data__field_indices_by_name,
   1,  proto__update__data__number_ranges,

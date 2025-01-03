@@ -30,6 +30,9 @@ PB_BIND(Proto_Gps_Data, Proto_Gps_Data, AUTO)
 PB_BIND(Proto_Lora_Config, Proto_Lora_Config, AUTO)
 
 
+PB_BIND(Proto_Odb2_Data, Proto_Odb2_Data, AUTO)
+
+
 PB_BIND(Proto_Lora_Stats, Proto_Lora_Stats, AUTO)
 
 
