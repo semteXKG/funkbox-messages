@@ -1547,12 +1547,12 @@ static const ProtobufCFieldDescriptor proto__mcu__data__field_descriptors[15] =
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "odb2_data",
+    "odb2",
     15,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
-    offsetof(ProtoMcuData, odb2_data),
+    offsetof(ProtoMcuData, odb2),
     &proto__odb2__data__descriptor,
     NULL,
     0,             /* flags */
@@ -1568,7 +1568,7 @@ static const unsigned proto__mcu__data__field_indices_by_name[] = {
   6,   /* field[6] = lap_data */
   13,   /* field[13] = lora_config */
   0,   /* field[0] = network_time_adjustment */
-  14,   /* field[14] = odb2_data */
+  14,   /* field[14] = odb2 */
   3,   /* field[3] = oil */
   12,   /* field[12] = oil_warn */
   8,   /* field[8] = outgoing_commands */
@@ -1671,12 +1671,12 @@ static const ProtobufCFieldDescriptor proto__update__data__field_descriptors[7] 
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "odb2_data",
+    "odb2",
     7,
     PROTOBUF_C_LABEL_OPTIONAL,
     PROTOBUF_C_TYPE_MESSAGE,
     0,   /* quantifier_offset */
-    offsetof(ProtoUpdateData, odb2_data),
+    offsetof(ProtoUpdateData, odb2),
     &proto__odb2__data__descriptor,
     NULL,
     0,             /* flags */
@@ -1687,7 +1687,7 @@ static const unsigned proto__update__data__field_indices_by_name[] = {
   2,   /* field[2] = gas_sensor */
   5,   /* field[5] = gps_data */
   3,   /* field[3] = lap_data */
-  6,   /* field[6] = odb2_data */
+  6,   /* field[6] = odb2 */
   1,   /* field[1] = oil_sensor */
   4,   /* field[4] = stint_data */
   0,   /* field[0] = water_sensor */

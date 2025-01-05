@@ -166,8 +166,8 @@ typedef struct _Proto_Mcu_Data {
     Proto_Car_Sensor oil_warn;
     bool has_lora_config;
     Proto_Lora_Config lora_config;
-    bool has_odb2_data;
-    Proto_Odb2_Data odb2_data;
+    bool has_odb2;
+    Proto_Odb2_Data odb2;
 } Proto_Mcu_Data;
 
 typedef struct _Proto_Update_Data {
@@ -183,8 +183,8 @@ typedef struct _Proto_Update_Data {
     Proto_Stint_Data stint_data;
     bool has_gps_data;
     Proto_Gps_Data gps_data;
-    bool has_odb2_data;
-    Proto_Odb2_Data odb2_data;
+    bool has_odb2;
+    Proto_Odb2_Data odb2;
 } Proto_Update_Data;
 
 typedef struct _Proto_Ack_Data {
@@ -340,14 +340,14 @@ extern "C" {
 #define Proto_Mcu_Data_gas_warn_tag              12
 #define Proto_Mcu_Data_oil_warn_tag              13
 #define Proto_Mcu_Data_lora_config_tag           14
-#define Proto_Mcu_Data_odb2_data_tag             15
+#define Proto_Mcu_Data_odb2_tag                  15
 #define Proto_Update_Data_water_sensor_tag       1
 #define Proto_Update_Data_oil_sensor_tag         2
 #define Proto_Update_Data_gas_sensor_tag         3
 #define Proto_Update_Data_lap_data_tag           4
 #define Proto_Update_Data_stint_data_tag         5
 #define Proto_Update_Data_gps_data_tag           6
-#define Proto_Update_Data_odb2_data_tag          7
+#define Proto_Update_Data_odb2_tag               7
 #define Proto_Ack_Data_seq_nr_tag                1
 #define Proto_LoRa_Data_seq_nr_tag               1
 #define Proto_LoRa_Data_requires_ack_tag         2
@@ -451,7 +451,7 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  gps,              11) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  gas_warn,         12) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  oil_warn,         13) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  lora_config,      14) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  odb2_data,        15)
+X(a, STATIC,   OPTIONAL, MESSAGE,  odb2,             15)
 #define Proto_Mcu_Data_CALLBACK pb_default_field_callback
 #define Proto_Mcu_Data_DEFAULT NULL
 #define Proto_Mcu_Data_water_MSGTYPE Proto_Car_Sensor
@@ -466,7 +466,7 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  odb2_data,        15)
 #define Proto_Mcu_Data_gas_warn_MSGTYPE Proto_Car_Sensor
 #define Proto_Mcu_Data_oil_warn_MSGTYPE Proto_Car_Sensor
 #define Proto_Mcu_Data_lora_config_MSGTYPE Proto_Lora_Config
-#define Proto_Mcu_Data_odb2_data_MSGTYPE Proto_Odb2_Data
+#define Proto_Mcu_Data_odb2_MSGTYPE Proto_Odb2_Data
 
 #define Proto_Update_Data_FIELDLIST(X, a) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  water_sensor,      1) \
@@ -475,7 +475,7 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  gas_sensor,        3) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  lap_data,          4) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  stint_data,        5) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  gps_data,          6) \
-X(a, STATIC,   OPTIONAL, MESSAGE,  odb2_data,         7)
+X(a, STATIC,   OPTIONAL, MESSAGE,  odb2,              7)
 #define Proto_Update_Data_CALLBACK NULL
 #define Proto_Update_Data_DEFAULT NULL
 #define Proto_Update_Data_water_sensor_MSGTYPE Proto_Car_Sensor
@@ -484,7 +484,7 @@ X(a, STATIC,   OPTIONAL, MESSAGE,  odb2_data,         7)
 #define Proto_Update_Data_lap_data_MSGTYPE Proto_Lap_Data
 #define Proto_Update_Data_stint_data_MSGTYPE Proto_Stint_Data
 #define Proto_Update_Data_gps_data_MSGTYPE Proto_Gps_Data
-#define Proto_Update_Data_odb2_data_MSGTYPE Proto_Odb2_Data
+#define Proto_Update_Data_odb2_MSGTYPE Proto_Odb2_Data
 
 #define Proto_Ack_Data_FIELDLIST(X, a) \
 X(a, STATIC,   OPTIONAL, UINT32,   seq_nr,            1)

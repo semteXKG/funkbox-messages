@@ -250,7 +250,7 @@ struct  _ProtoMcuData
   ProtoCarSensor *gas_warn;
   ProtoCarSensor *oil_warn;
   ProtoLoraConfig *lora_config;
-  ProtoOdb2Data *odb2_data;
+  ProtoOdb2Data *odb2;
 };
 #define PROTO__MCU__DATA__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&proto__mcu__data__descriptor) \
@@ -266,7 +266,7 @@ struct  _ProtoUpdateData
   ProtoLapData *lap_data;
   ProtoStintData *stint_data;
   ProtoGpsData *gps_data;
-  ProtoOdb2Data *odb2_data;
+  ProtoOdb2Data *odb2;
 };
 #define PROTO__UPDATE__DATA__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&proto__update__data__descriptor) \

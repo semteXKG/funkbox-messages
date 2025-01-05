@@ -117,7 +117,7 @@ message Proto_Mcu_Data {
     optional Proto_Car_Sensor oil_warn = 13;
 
     optional Proto_Lora_Config lora_config = 14;
-    optional Proto_Odb2_Data odb2_data = 15;
+    optional Proto_Odb2_Data odb2 = 15;
 }
 
 message Proto_Update_Data {
@@ -127,7 +127,7 @@ message Proto_Update_Data {
     optional Proto_Lap_Data lap_data = 4;
     optional Proto_Stint_Data stint_data = 5;
     optional Proto_Gps_Data gps_data = 6;
-    optional Proto_Odb2_Data odb2_data = 7;
+    optional Proto_Odb2_Data odb2 = 7;
 };
 
 message Proto_Ack_Data {
