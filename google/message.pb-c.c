@@ -457,6 +457,96 @@ void   proto__lora__stats__free_unpacked
   assert(message->base.descriptor == &proto__lora__stats__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   proto__shiftlight__config__init
+                     (ProtoShiftlightConfig         *message)
+{
+  static const ProtoShiftlightConfig init_value = PROTO__SHIFTLIGHT__CONFIG__INIT;
+  *message = init_value;
+}
+size_t proto__shiftlight__config__get_packed_size
+                     (const ProtoShiftlightConfig *message)
+{
+  assert(message->base.descriptor == &proto__shiftlight__config__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t proto__shiftlight__config__pack
+                     (const ProtoShiftlightConfig *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &proto__shiftlight__config__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t proto__shiftlight__config__pack_to_buffer
+                     (const ProtoShiftlightConfig *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &proto__shiftlight__config__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+ProtoShiftlightConfig *
+       proto__shiftlight__config__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (ProtoShiftlightConfig *)
+     protobuf_c_message_unpack (&proto__shiftlight__config__descriptor,
+                                allocator, len, data);
+}
+void   proto__shiftlight__config__free_unpacked
+                     (ProtoShiftlightConfig *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &proto__shiftlight__config__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   proto__button__init
+                     (ProtoButton         *message)
+{
+  static const ProtoButton init_value = PROTO__BUTTON__INIT;
+  *message = init_value;
+}
+size_t proto__button__get_packed_size
+                     (const ProtoButton *message)
+{
+  assert(message->base.descriptor == &proto__button__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t proto__button__pack
+                     (const ProtoButton *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &proto__button__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t proto__button__pack_to_buffer
+                     (const ProtoButton *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &proto__button__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+ProtoButton *
+       proto__button__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (ProtoButton *)
+     protobuf_c_message_unpack (&proto__button__descriptor,
+                                allocator, len, data);
+}
+void   proto__button__free_unpacked
+                     (ProtoButton *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &proto__button__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   proto__mcu__data__init
                      (ProtoMcuData         *message)
 {
@@ -1376,7 +1466,148 @@ const ProtobufCMessageDescriptor proto__lora__stats__descriptor =
   (ProtobufCMessageInit) proto__lora__stats__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor proto__mcu__data__field_descriptors[15] =
+static const ProtobufCFieldDescriptor proto__shiftlight__config__field_descriptors[4] =
+{
+  {
+    "mode",
+    1,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_ENUM,
+    offsetof(ProtoShiftlightConfig, has_mode),
+    offsetof(ProtoShiftlightConfig, mode),
+    &shiftlight__mode__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "rpm_red_flash",
+    2,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(ProtoShiftlightConfig, has_rpm_red_flash),
+    offsetof(ProtoShiftlightConfig, rpm_red_flash),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "brightness",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(ProtoShiftlightConfig, has_brightness),
+    offsetof(ProtoShiftlightConfig, brightness),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "rpm_limits",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(ProtoShiftlightConfig, n_rpm_limits),
+    offsetof(ProtoShiftlightConfig, rpm_limits),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned proto__shiftlight__config__field_indices_by_name[] = {
+  2,   /* field[2] = brightness */
+  0,   /* field[0] = mode */
+  3,   /* field[3] = rpm_limits */
+  1,   /* field[1] = rpm_red_flash */
+};
+static const ProtobufCIntRange proto__shiftlight__config__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 4 }
+};
+const ProtobufCMessageDescriptor proto__shiftlight__config__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "Proto_Shiftlight_Config",
+  "ProtoShiftlightConfig",
+  "ProtoShiftlightConfig",
+  "",
+  sizeof(ProtoShiftlightConfig),
+  4,
+  proto__shiftlight__config__field_descriptors,
+  proto__shiftlight__config__field_indices_by_name,
+  1,  proto__shiftlight__config__number_ranges,
+  (ProtobufCMessageInit) proto__shiftlight__config__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor proto__button__field_descriptors[3] =
+{
+  {
+    "name",
+    1,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_ENUM,
+    offsetof(ProtoButton, has_name),
+    offsetof(ProtoButton, name),
+    &button__name__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "state",
+    2,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_ENUM,
+    offsetof(ProtoButton, has_state),
+    offsetof(ProtoButton, state),
+    &button__state__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "state_since",
+    3,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(ProtoButton, has_state_since),
+    offsetof(ProtoButton, state_since),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned proto__button__field_indices_by_name[] = {
+  0,   /* field[0] = name */
+  1,   /* field[1] = state */
+  2,   /* field[2] = state_since */
+};
+static const ProtobufCIntRange proto__button__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 3 }
+};
+const ProtobufCMessageDescriptor proto__button__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "Proto_Button",
+  "ProtoButton",
+  "ProtoButton",
+  "",
+  sizeof(ProtoButton),
+  3,
+  proto__button__field_descriptors,
+  proto__button__field_indices_by_name,
+  1,  proto__button__number_ranges,
+  (ProtobufCMessageInit) proto__button__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor proto__mcu__data__field_descriptors[16] =
 {
   {
     "network_time_adjustment",
@@ -1558,6 +1789,18 @@ static const ProtobufCFieldDescriptor proto__mcu__data__field_descriptors[15] =
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "shiftlight_config",
+    16,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(ProtoMcuData, shiftlight_config),
+    &proto__shiftlight__config__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned proto__mcu__data__field_indices_by_name[] = {
   7,   /* field[7] = events */
@@ -1573,13 +1816,14 @@ static const unsigned proto__mcu__data__field_indices_by_name[] = {
   12,   /* field[12] = oil_warn */
   8,   /* field[8] = outgoing_commands */
   1,   /* field[1] = send_timestamp */
+  15,   /* field[15] = shiftlight_config */
   5,   /* field[5] = stint */
   2,   /* field[2] = water */
 };
 static const ProtobufCIntRange proto__mcu__data__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 15 }
+  { 0, 16 }
 };
 const ProtobufCMessageDescriptor proto__mcu__data__descriptor =
 {
@@ -1589,7 +1833,7 @@ const ProtobufCMessageDescriptor proto__mcu__data__descriptor =
   "ProtoMcuData",
   "",
   sizeof(ProtoMcuData),
-  15,
+  16,
   proto__mcu__data__field_descriptors,
   proto__mcu__data__field_indices_by_name,
   1,  proto__mcu__data__number_ranges,
@@ -1855,7 +2099,7 @@ const ProtobufCMessageDescriptor proto__lo_ra__data__descriptor =
   (ProtobufCMessageInit) proto__lo_ra__data__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor proto__message__field_descriptors[4] =
+static const ProtobufCFieldDescriptor proto__message__field_descriptors[5] =
 {
   {
     "mcu_data",
@@ -1905,8 +2149,21 @@ static const ProtobufCFieldDescriptor proto__message__field_descriptors[4] =
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "button_state",
+    5,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(ProtoMessage, n_button_state),
+    offsetof(ProtoMessage, button_state),
+    &proto__button__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned proto__message__field_indices_by_name[] = {
+  4,   /* field[4] = button_state */
   2,   /* field[2] = command_data */
   1,   /* field[1] = lora_data */
   3,   /* field[3] = lora_stats */
@@ -1915,7 +2172,7 @@ static const unsigned proto__message__field_indices_by_name[] = {
 static const ProtobufCIntRange proto__message__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor proto__message__descriptor =
 {
@@ -1925,7 +2182,7 @@ const ProtobufCMessageDescriptor proto__message__descriptor =
   "ProtoMessage",
   "",
   sizeof(ProtoMessage),
-  4,
+  5,
   proto__message__field_descriptors,
   proto__message__field_indices_by_name,
   1,  proto__message__number_ranges,
@@ -2064,5 +2321,95 @@ const ProtobufCEnumDescriptor proto__lora__type__descriptor =
   proto__lora__type__enum_values_by_name,
   1,
   proto__lora__type__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
+};
+static const ProtobufCEnumValue shiftlight__mode__enum_values_by_number[2] =
+{
+  { "LEFT_RIGHT", "SHIFTLIGHT__MODE__LEFT_RIGHT", 1 },
+  { "BOTH_SIDES", "SHIFTLIGHT__MODE__BOTH_SIDES", 2 },
+};
+static const ProtobufCIntRange shiftlight__mode__value_ranges[] = {
+{1, 0},{0, 2}
+};
+static const ProtobufCEnumValueIndex shiftlight__mode__enum_values_by_name[2] =
+{
+  { "BOTH_SIDES", 1 },
+  { "LEFT_RIGHT", 0 },
+};
+const ProtobufCEnumDescriptor shiftlight__mode__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "Shiftlight_Mode",
+  "Shiftlight_Mode",
+  "ShiftlightMode",
+  "",
+  2,
+  shiftlight__mode__enum_values_by_number,
+  2,
+  shiftlight__mode__enum_values_by_name,
+  1,
+  shiftlight__mode__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
+};
+static const ProtobufCEnumValue button__name__enum_values_by_number[5] =
+{
+  { "PIT", "BUTTON__NAME__PIT", 1 },
+  { "FUEL", "BUTTON__NAME__FUEL", 2 },
+  { "FCK", "BUTTON__NAME__FCK", 3 },
+  { "STINT", "BUTTON__NAME__STINT", 4 },
+  { "ALARM", "BUTTON__NAME__ALARM", 5 },
+};
+static const ProtobufCIntRange button__name__value_ranges[] = {
+{1, 0},{0, 5}
+};
+static const ProtobufCEnumValueIndex button__name__enum_values_by_name[5] =
+{
+  { "ALARM", 4 },
+  { "FCK", 2 },
+  { "FUEL", 1 },
+  { "PIT", 0 },
+  { "STINT", 3 },
+};
+const ProtobufCEnumDescriptor button__name__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "Button_Name",
+  "Button_Name",
+  "ButtonName",
+  "",
+  5,
+  button__name__enum_values_by_number,
+  5,
+  button__name__enum_values_by_name,
+  1,
+  button__name__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
+};
+static const ProtobufCEnumValue button__state__enum_values_by_number[2] =
+{
+  { "PRESSED", "BUTTON__STATE__PRESSED", 1 },
+  { "DEPRESSED", "BUTTON__STATE__DEPRESSED", 2 },
+};
+static const ProtobufCIntRange button__state__value_ranges[] = {
+{1, 0},{0, 2}
+};
+static const ProtobufCEnumValueIndex button__state__enum_values_by_name[2] =
+{
+  { "DEPRESSED", 1 },
+  { "PRESSED", 0 },
+};
+const ProtobufCEnumDescriptor button__state__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "Button_State",
+  "Button_State",
+  "ButtonState",
+  "",
+  2,
+  button__state__enum_values_by_number,
+  2,
+  button__state__enum_values_by_name,
+  1,
+  button__state__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };

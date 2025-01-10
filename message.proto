@@ -1,5 +1,5 @@
 syntax = "proto2";
-// https://github.com/protobuf-c/protobuf-c/wiki/Examples#strings
+
 enum Proto_Severity {
     POSITIVE = 1;
     NORMAL = 2;
@@ -31,6 +31,23 @@ enum Proto_Lora_Type {
     LORA_COMMAND = 7;
 };
 
+enum Shiftlight_Mode {
+  LEFT_RIGHT = 1;
+  BOTH_SIDES = 2;
+}
+
+enum Button_Name {
+  PIT = 1;
+  FUEL = 2; 
+  FCK = 3; 
+  STINT = 4;
+  ALARM = 5;
+}
+
+enum Button_State {
+  PRESSED = 1;
+  DEPRESSED = 2; 
+}
 
 message Proto_Event {
     optional int32 id = 1;
@@ -98,6 +115,19 @@ message Proto_Lora_Stats {
     optional int32 receive_time = 3 ;
 }
 
+message Proto_Shiftlight_Config {
+    optional Shiftlight_Mode mode = 1;
+    optional int32 rpm_red_flash = 2;
+    optional int32 brightness = 3;
+    repeated int32 rpm_limits = 4;
+}
+
+message Proto_Button {
+    optional Button_Name name = 1; 
+    optional Button_State state = 2; 
+    optional int32 state_since = 3;
+}
+
 message Proto_Mcu_Data {
     optional uint32 network_time_adjustment = 1;
     optional uint32 send_timestamp = 2;
@@ -117,7 +147,9 @@ message Proto_Mcu_Data {
     optional Proto_Car_Sensor oil_warn = 13;
 
     optional Proto_Lora_Config lora_config = 14;
+  
     optional Proto_Odb2_Data odb2 = 15;
+    optional Proto_Shiftlight_Config shiftlight_config = 16;
 }
 
 message Proto_Update_Data {
@@ -148,4 +180,5 @@ message Proto_Message {
   optional Proto_LoRa_Data lora_data = 2;
   optional Proto_Command command_data = 3;
   optional Proto_Lora_Stats lora_stats = 4;
+  repeated Proto_Button button_state = 5;
 }

@@ -36,6 +36,12 @@ PB_BIND(Proto_Odb2_Data, Proto_Odb2_Data, AUTO)
 PB_BIND(Proto_Lora_Stats, Proto_Lora_Stats, AUTO)
 
 
+PB_BIND(Proto_Shiftlight_Config, Proto_Shiftlight_Config, AUTO)
+
+
+PB_BIND(Proto_Button, Proto_Button, AUTO)
+
+
 PB_BIND(Proto_Mcu_Data, Proto_Mcu_Data, 2)
 
 
@@ -49,6 +55,9 @@ PB_BIND(Proto_LoRa_Data, Proto_LoRa_Data, 2)
 
 
 PB_BIND(Proto_Message, Proto_Message, 2)
+
+
+
 
 
 
