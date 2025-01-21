@@ -28,7 +28,8 @@ typedef enum _Proto_Command_Type {
     Proto_Command_Type_COM_NONE = 1,
     Proto_Command_Type_COM_PIT = 2,
     Proto_Command_Type_COM_STINT_OVER = 3,
-    Proto_Command_Type_COM_FCK = 4
+    Proto_Command_Type_COM_FCK = 4,
+    Proto_Command_Type_COM_FUEL = 5
 } Proto_Command_Type;
 
 typedef enum _Proto_Lora_Type {
@@ -146,6 +147,8 @@ typedef struct _Proto_Lora_Config {
 typedef struct _Proto_Odb2_Data {
     bool has_rpm;
     uint32_t rpm;
+    bool has_coolant;
+    int32_t coolant;
 } Proto_Odb2_Data;
 
 typedef struct _Proto_Lora_Stats {
@@ -274,8 +277,8 @@ extern "C" {
 #define _Proto_Event_Type_ARRAYSIZE ((Proto_Event_Type)(Proto_Event_Type_EVT_STATE_CHANGE+1))
 
 #define _Proto_Command_Type_MIN Proto_Command_Type_COM_NONE
-#define _Proto_Command_Type_MAX Proto_Command_Type_COM_FCK
-#define _Proto_Command_Type_ARRAYSIZE ((Proto_Command_Type)(Proto_Command_Type_COM_FCK+1))
+#define _Proto_Command_Type_MAX Proto_Command_Type_COM_FUEL
+#define _Proto_Command_Type_ARRAYSIZE ((Proto_Command_Type)(Proto_Command_Type_COM_FUEL+1))
 
 #define _Proto_Lora_Type_MIN Proto_Lora_Type_LORA_ACK
 #define _Proto_Lora_Type_MAX Proto_Lora_Type_LORA_COMMAND
@@ -326,7 +329,7 @@ extern "C" {
 #define Proto_Lap_Data_init_default              {false, 0, false, 0, false, 0, false, 0, 0, {Proto_Lap_init_default, Proto_Lap_init_default, Proto_Lap_init_default, Proto_Lap_init_default, Proto_Lap_init_default}}
 #define Proto_Gps_Data_init_default              {false, 0, false, 0, false, 0}
 #define Proto_Lora_Config_init_default           {false, 0, false, 0, false, 0}
-#define Proto_Odb2_Data_init_default             {false, 0}
+#define Proto_Odb2_Data_init_default             {false, 0, false, 0}
 #define Proto_Lora_Stats_init_default            {false, 0, false, 0, false, 0}
 #define Proto_Shiftlight_Config_init_default     {false, _Shiftlight_Mode_MIN, false, 0, false, 0, 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}
 #define Proto_Button_init_default                {false, _Button_Name_MIN, false, _Button_State_MIN, false, 0}
@@ -343,7 +346,7 @@ extern "C" {
 #define Proto_Lap_Data_init_zero                 {false, 0, false, 0, false, 0, false, 0, 0, {Proto_Lap_init_zero, Proto_Lap_init_zero, Proto_Lap_init_zero, Proto_Lap_init_zero, Proto_Lap_init_zero}}
 #define Proto_Gps_Data_init_zero                 {false, 0, false, 0, false, 0}
 #define Proto_Lora_Config_init_zero              {false, 0, false, 0, false, 0}
-#define Proto_Odb2_Data_init_zero                {false, 0}
+#define Proto_Odb2_Data_init_zero                {false, 0, false, 0}
 #define Proto_Lora_Stats_init_zero               {false, 0, false, 0, false, 0}
 #define Proto_Shiftlight_Config_init_zero        {false, _Shiftlight_Mode_MIN, false, 0, false, 0, 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}
 #define Proto_Button_init_zero                   {false, _Button_Name_MIN, false, _Button_State_MIN, false, 0}
@@ -385,6 +388,7 @@ extern "C" {
 #define Proto_Lora_Config_spreading_factor_tag   2
 #define Proto_Lora_Config_output_power_tag       3
 #define Proto_Odb2_Data_rpm_tag                  1
+#define Proto_Odb2_Data_coolant_tag              2
 #define Proto_Lora_Stats_rssi_tag                1
 #define Proto_Lora_Stats_snr_tag                 2
 #define Proto_Lora_Stats_receive_time_tag        3
@@ -496,7 +500,8 @@ X(a, STATIC,   OPTIONAL, INT32,    output_power,      3)
 #define Proto_Lora_Config_DEFAULT NULL
 
 #define Proto_Odb2_Data_FIELDLIST(X, a) \
-X(a, STATIC,   OPTIONAL, UINT32,   rpm,               1)
+X(a, STATIC,   OPTIONAL, UINT32,   rpm,               1) \
+X(a, STATIC,   OPTIONAL, INT32,    coolant,           2)
 #define Proto_Odb2_Data_CALLBACK NULL
 #define Proto_Odb2_Data_DEFAULT NULL
 
@@ -655,13 +660,13 @@ extern const pb_msgdesc_t Proto_Message_msg;
 #define Proto_Gps_Data_size                      29
 #define Proto_Lap_Data_size                      149
 #define Proto_Lap_size                           22
-#define Proto_LoRa_Data_size                     328
+#define Proto_LoRa_Data_size                     339
 #define Proto_Lora_Config_size                   26
 #define Proto_Lora_Stats_size                    29
-#define Proto_Odb2_Data_size                     6
+#define Proto_Odb2_Data_size                     17
 #define Proto_Shiftlight_Config_size             134
 #define Proto_Stint_Data_size                    22
-#define Proto_Update_Data_size                   266
+#define Proto_Update_Data_size                   277
 
 #ifdef __cplusplus
 } /* extern "C" */

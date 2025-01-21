@@ -1364,7 +1364,7 @@ const ProtobufCMessageDescriptor proto__lora__config__descriptor =
   (ProtobufCMessageInit) proto__lora__config__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor proto__odb2__data__field_descriptors[1] =
+static const ProtobufCFieldDescriptor proto__odb2__data__field_descriptors[2] =
 {
   {
     "rpm",
@@ -1378,14 +1378,27 @@ static const ProtobufCFieldDescriptor proto__odb2__data__field_descriptors[1] =
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "coolant",
+    2,
+    PROTOBUF_C_LABEL_OPTIONAL,
+    PROTOBUF_C_TYPE_INT32,
+    offsetof(ProtoOdb2Data, has_coolant),
+    offsetof(ProtoOdb2Data, coolant),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned proto__odb2__data__field_indices_by_name[] = {
+  1,   /* field[1] = coolant */
   0,   /* field[0] = rpm */
 };
 static const ProtobufCIntRange proto__odb2__data__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor proto__odb2__data__descriptor =
 {
@@ -1395,7 +1408,7 @@ const ProtobufCMessageDescriptor proto__odb2__data__descriptor =
   "ProtoOdb2Data",
   "",
   sizeof(ProtoOdb2Data),
-  1,
+  2,
   proto__odb2__data__field_descriptors,
   proto__odb2__data__field_indices_by_name,
   1,  proto__odb2__data__number_ranges,
@@ -2253,19 +2266,21 @@ const ProtobufCEnumDescriptor proto__event__type__descriptor =
   proto__event__type__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue proto__command__type__enum_values_by_number[4] =
+static const ProtobufCEnumValue proto__command__type__enum_values_by_number[5] =
 {
   { "COM_NONE", "PROTO__COMMAND__TYPE__COM_NONE", 1 },
   { "COM_PIT", "PROTO__COMMAND__TYPE__COM_PIT", 2 },
   { "COM_STINT_OVER", "PROTO__COMMAND__TYPE__COM_STINT_OVER", 3 },
   { "COM_FCK", "PROTO__COMMAND__TYPE__COM_FCK", 4 },
+  { "COM_FUEL", "PROTO__COMMAND__TYPE__COM_FUEL", 5 },
 };
 static const ProtobufCIntRange proto__command__type__value_ranges[] = {
-{1, 0},{0, 4}
+{1, 0},{0, 5}
 };
-static const ProtobufCEnumValueIndex proto__command__type__enum_values_by_name[4] =
+static const ProtobufCEnumValueIndex proto__command__type__enum_values_by_name[5] =
 {
   { "COM_FCK", 3 },
+  { "COM_FUEL", 4 },
   { "COM_NONE", 0 },
   { "COM_PIT", 1 },
   { "COM_STINT_OVER", 2 },
@@ -2277,9 +2292,9 @@ const ProtobufCEnumDescriptor proto__command__type__descriptor =
   "Proto_Command_Type",
   "ProtoCommandType",
   "",
-  4,
+  5,
   proto__command__type__enum_values_by_number,
-  4,
+  5,
   proto__command__type__enum_values_by_name,
   1,
   proto__command__type__value_ranges,

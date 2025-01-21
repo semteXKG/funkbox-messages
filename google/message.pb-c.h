@@ -54,7 +54,8 @@ typedef enum _ProtoCommandType {
   PROTO__COMMAND__TYPE__COM_NONE = 1,
   PROTO__COMMAND__TYPE__COM_PIT = 2,
   PROTO__COMMAND__TYPE__COM_STINT_OVER = 3,
-  PROTO__COMMAND__TYPE__COM_FCK = 4
+  PROTO__COMMAND__TYPE__COM_FCK = 4,
+  PROTO__COMMAND__TYPE__COM_FUEL = 5
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(PROTO__COMMAND__TYPE)
 } ProtoCommandType;
 typedef enum _ProtoLoraType {
@@ -224,10 +225,12 @@ struct  _ProtoOdb2Data
   ProtobufCMessage base;
   protobuf_c_boolean has_rpm;
   uint32_t rpm;
+  protobuf_c_boolean has_coolant;
+  int32_t coolant;
 };
 #define PROTO__ODB2__DATA__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&proto__odb2__data__descriptor) \
-    , 0, 0 }
+    , 0, 0, 0, 0 }
 
 
 struct  _ProtoLoraStats

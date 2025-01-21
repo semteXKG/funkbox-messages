@@ -19,6 +19,7 @@ enum Proto_Command_Type {
     COM_PIT = 2;
     COM_STINT_OVER = 3;
     COM_FCK = 4;
+    COM_FUEL = 5;
 };
 
 enum Proto_Lora_Type {
@@ -107,6 +108,7 @@ message Proto_Lora_Config {
 
 message Proto_Odb2_Data {
     optional uint32 rpm = 1;
+    optional int32 coolant = 2;
 }
 
 message Proto_Lora_Stats {
