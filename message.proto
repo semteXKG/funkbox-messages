@@ -152,6 +152,8 @@ message Proto_Mcu_Data {
   
     optional Proto_Odb2_Data odb2 = 15;
     optional Proto_Shiftlight_Config shiftlight_config = 16;
+    
+    optional int64 pitstop_since = 17;  
 }
 
 message Proto_Update_Data {

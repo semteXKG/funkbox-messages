@@ -304,10 +304,12 @@ struct  _ProtoMcuData
   ProtoLoraConfig *lora_config;
   ProtoOdb2Data *odb2;
   ProtoShiftlightConfig *shiftlight_config;
+  protobuf_c_boolean has_pitstop_since;
+  int64_t pitstop_since;
 };
 #define PROTO__MCU__DATA__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&proto__mcu__data__descriptor) \
-    , 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, NULL, NULL, NULL, NULL }
+    , 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0 }
 
 
 struct  _ProtoUpdateData
