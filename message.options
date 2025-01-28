@@ -1,3 +1,6 @@
 Proto_Lap_Data.laps max_count:5
 Proto_Shiftlight_Config.rpm_limits max_count:10
 Proto_Message.button_state max_count:6
+Proto_Mcu_Data.outgoing_commands max_count:5
+Proto_Mcu_Data.incoming_commands max_count:5
+Proto_Mcu_Data.events max_count:5
